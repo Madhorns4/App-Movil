@@ -2,6 +2,7 @@ package com.example.sviaje.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,9 +17,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sviaje.Activities.Home.Principal;
+import com.example.sviaje.Models.Preference;
 import com.example.sviaje.Models.Usuario;
 import com.example.sviaje.Models.daoUsuario;
 import com.example.sviaje.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     finish();
                 }*/
 
-                validarUsuario("http://192.168.88.193/sviaje/login.php");
+                validarUsuario("http://192.168.1.9/login.php");
 
                 break;
 
@@ -85,17 +92,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(String response) {
                 if (!response.isEmpty()){
-                    Intent intentp = new Intent(getApplicationContext(),MainActivity.class);
+                    System.out.println(response);
+                    String nombre=null;
+                    String apellido=null;
+                    String usuario=null;
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        int id = json.getInt("id_usuario");
+                        nombre = json.getString("nombre");
+                        apellido = json.getString("apellido");
+                        usuario = json.getString("usuario");
+                        Preference preference = new Preference();
+
+                        preference.Saveiduser(LoginActivity.this,id,nombre,apellido,usuario);
+
+                    }catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    Intent intentp = new Intent(getApplicationContext(), Principal.class);
+                    intentp.putExtra("nombre",nombre);
+                    intentp.putExtra("apellido",apellido);
+                    intentp.putExtra("usuario",usuario);
+
                     startActivity(intentp);
+
                 }else{
                     Toast.makeText(LoginActivity.this, "Usuario o Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
+
                 Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+
             }
+
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
@@ -103,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 parametros.put("usuario",etUsuario.getText().toString());
                 parametros.put("clave", etClave.getText().toString());
                 return parametros;
+
             }
         };
 
