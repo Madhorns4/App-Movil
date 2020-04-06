@@ -1,7 +1,18 @@
 package com.example.sviaje.Activities.Home;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.sviaje.Activities.ProvinciaActivity;
+import com.example.sviaje.Models.MyDBOpenHelper;
 import com.example.sviaje.Models.Preference;
 import com.example.sviaje.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,10 +34,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Principal extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +55,10 @@ public class Principal extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent i = new Intent(Principal.this, ProvinciaActivity.class);
+                startActivity(i);
+
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -70,10 +89,8 @@ public class Principal extends AppCompatActivity {
 
 
 
+
     }
-
-
-
 
 
 

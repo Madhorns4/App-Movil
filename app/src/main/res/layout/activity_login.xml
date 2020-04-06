@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/et_usuario_login"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="300dp"
+         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"

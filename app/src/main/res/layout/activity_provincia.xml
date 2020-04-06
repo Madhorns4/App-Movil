@@ -5,6 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:background="#373635"
     tools:context=".Activities.ProvinciaActivity">
 
@@ -12,9 +14,7 @@
         android:id="@+id/tvMProvincia"
         android:layout_width="333dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="8dp"
+
         android:text="Seleccione una Provincia:"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -22,24 +22,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv_provincia"
-       >
+    <GridView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:numColumns="1"
+        android:columnWidth="120dp"
+        android:horizontalSpacing="20dp"
+        android:verticalSpacing="@dimen/activity_vertical_margin"
+        tools:listitem="@layout/panel_gird"
+        android:id="@+id/grid_provincia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    </ListView>
+    </GridView>
 
 
-    <Button
-        android:id="@+id/btn_prov_prov"
-        android:layout_width="280dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/button_rounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMProvincia" />
+
 </LinearLayout>

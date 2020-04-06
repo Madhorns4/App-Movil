@@ -12,9 +12,6 @@
         android:id="@+id/tvMCiudad"
         android:layout_width="333dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="8dp"
         android:text="Seleccione una Ciudad:"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -35,22 +32,5 @@
 
 
 
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/btn_ciu_ciu"
-        android:layout_width="280dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/button_rounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMCiudad" />
-
-</LinearLayout>
 
 </LinearLayout>
