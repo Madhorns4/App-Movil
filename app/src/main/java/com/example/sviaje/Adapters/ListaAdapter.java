@@ -54,8 +54,8 @@ public class ListaAdapter extends BaseAdapter {
 
 
 
-        direccion.setText(list.get(position).getN_pais()+","+list.get(position).getN_provincia()+","+list.get(position).getN_ciudad());
-        costo.setText(list.get(position).getCosto()+"");
+        direccion.setText(list.get(position).getId_viaje()+","+list.get(position).getN_pais()+","+list.get(position).getN_provincia()+","+list.get(position).getN_ciudad());
+        costo.setText(list.get(position).getN_lugar()+"");
         f.setText(list.get(position).getFecha()+"; "+list.get(position).getHora());
         return convertView;
     }

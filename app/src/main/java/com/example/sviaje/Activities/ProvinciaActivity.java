@@ -45,7 +45,7 @@ public class ProvinciaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_provincia);
         gridView = (GridView)findViewById(R.id.grid_provincia);
         System.out.println("error");
-        obtenerProvincia("http://192.168.1.9/Paises.php");
+        obtenerProvincia("http://192.168.88.193/Paises.php");
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class ProvinciaActivity extends AppCompatActivity {
 
                 Intent i = new Intent(ProvinciaActivity.this, CiudadActivity.class);
                 i.putExtra("id_provincia", provinciaselect.getId_provincia());
-                i.putExtra("n_provincia",provinciaselect.getId_provincia());
+                i.putExtra("n_provincia",provinciaselect.getNombre());
                 startActivity(i);
 
 

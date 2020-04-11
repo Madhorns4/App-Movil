@@ -1,6 +1,8 @@
 package com.example.sviaje.Activities.Home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -11,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sviaje.Activities.LoginActivity;
 import com.example.sviaje.Activities.ProvinciaActivity;
 import com.example.sviaje.Models.MyDBOpenHelper;
 import com.example.sviaje.Models.Preference;
@@ -18,8 +21,10 @@ import com.example.sviaje.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -107,5 +112,19 @@ public class Principal extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_settings:
+            SharedPreferences preferences;
+            preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+            preferences.edit().clear().apply();
+            finish();
+            return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

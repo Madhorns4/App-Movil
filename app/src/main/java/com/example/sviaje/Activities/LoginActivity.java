@@ -51,14 +51,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnIniciar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
 
-        //dao = new daoUsuario(this);
+        dao = new daoUsuario(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_iniciarsesion_login:
-                /*
+
                 String u = etUsuario.getText().toString();
                 String c = etClave.getText().toString();
                 if (u.equals("")&&c.equals("")){
@@ -66,13 +66,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }if (dao.login(u,c)==1){
                     Usuario ur = dao.getUsuario(u,c);
                     Toast.makeText(this, "Datos Correctos", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, Principal.class);
                     intent.putExtra("id_usuario", ur.getId_usuario());
                     startActivity(intent);
                     finish();
-                }*/
+                }
 
-                validarUsuario("http://192.168.1.9/login.php");
+                validarUsuario("http://192.168.88.193/login.php");
 
                 break;
 
